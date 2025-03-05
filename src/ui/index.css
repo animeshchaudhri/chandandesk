@@ -27,7 +27,7 @@ body {
 }
 
 .left-pane {
-    width: 200px;
+    width: 100%;
     height: *;
     background: color(bg);
     border-right: color(border) 1px solid;
@@ -39,6 +39,7 @@ body {
 }
 
 #ab .right-pane {
+    display: none;  
     background: none;
 }
 
