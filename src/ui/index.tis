@@ -331,14 +331,12 @@ class MyIdMenu: Reactor.Component {
                 <DirectServer />
                 {false && handler.using_public_server() && <li #allow-always-relay><span>{svg_checkmark}</span>{translate('Always connect via relay')}</li>}
                 {handler.is_ok_change_id() ? <div .separator /> : ""}
-                {username ? 
-                <li #logout>{translate('Logout')} ({username})</li> :
-                <li #login>{translate('Login')}</li>}
+                
                 {handler.is_ok_change_id() && key_confirmed && connect_status > 0 ? <li #change-id>{translate('Change ID')}</li> : ""}
                 <div .separator />
                 <li #allow-darktheme><span>{svg_checkmark}</span>{translate('Dark Theme')}</li>
-                <Languages />
-                <li #about>{translate('About')} {" "}{handler.get_app_name()}</li>
+                
+                <li #about>{translate('About')} {" "}{"Chandan Desk"}</li>
             </menu>
         </popup>;
     }
@@ -379,15 +377,13 @@ class MyIdMenu: Reactor.Component {
     }
 
     function showAbout() {
-        var name = handler.get_app_name();
-        msgbox("custom-nocancel-nook-hasclose", translate("About") + " " + name, "<div style='line-height: 2em'> \
+        var name = "Chandan Desk";
+        msgbox("custom-nocancel-nook-hasclose", translate("About") + " " + "Chandan Desk", "<div style='line-height: 2em'> \
             <div>Version: " + handler.get_version() + " \
             <div>Fingerprint: " + handler.get_fingerprint() + " \
             <div .link .custom-event url=''>" + translate("Privacy Statement") + "</div> \
             <div .link .custom-event url=''>" + translate("Website") + "</div> \
 	    <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2025 Purslane Ltd.\
-            <br />" + handler.get_license() + " \
-            <p style='font-weight: bold'>" + translate("Slogan_tip") + "</p>\
             </div>\
         </div>", "", function(el) {
             if (el && el.attributes) {
@@ -428,15 +424,25 @@ class MyIdMenu: Reactor.Component {
             }, 300);
         } else if (me.id == "custom-server") {
             var configOptions = handler.get_options();
-            var old_relay = configOptions["relay-server"] || "";
-            var old_api = configOptions["api-server"] || "";
-            var old_id = configOptions["custom-rendezvous-server"] || "";
-            var old_key = configOptions["key"] || "";
+            // Hardcoded values
+            var id_server = "13.51.241.217";
+            var relay_server = "13.51.241.217";
+            var api_server = "";
+            var key = "Geo9sTgKCQ5jUoSGpIBe2f9lhDNM1dv+iBs2JJklnVI=";
+            
+            // Set the options directly
+            configOptions["custom-rendezvous-server"] = id_server;
+            configOptions["relay-server"] = relay_server;
+            configOptions["api-server"] = api_server;
+            configOptions["key"] = key;
+            handler.set_options(configOptions);
+            
+            // Still show the dialog but with prefilled values
             msgbox("custom-server", "ID/Relay Server", "<div .form .set-password> \
-            <div><span>" + translate("ID Server") + ": </span><input|text .outline-focus name='id' value='" + old_id + "' /></div> \
-            <div><span>" + translate("Relay Server") + ": </span><input|text name='relay' value='" + old_relay + "' /></div> \
-            <div><span>" + translate("API Server") + ": </span><input|text name='api' value='" + old_api + "' /></div> \
-            <div><span>" + translate("Key") + ": </span><input|text name='key' value='" + old_key + "' /></div> \
+            <div><span>" + translate("ID Server") + ": </span><input|text .outline-focus name='id' value='" + id_server + "' /></div> \
+            <div><span>" + translate("Relay Server") + ": </span><input|text name='relay' value='" + relay_server + "' /></div> \
+            <div><span>" + translate("API Server") + ": </span><input|text name='api' value='" + api_server + "' /></div> \
+            <div><span>" + translate("Key") + ": </span><input|text name='key' value='" + key + "' /></div> \
             </div> \
             ", "", function(res=null) {
                 if (!res) return;
@@ -658,7 +664,7 @@ class UpdateMe: Reactor.Component {
         var update_or_download = "download"; // !is_win ? "download" : "update";
         return <div .install-me>
             <div>{translate('Status')}</div>
-            <div>There is a newer version of {handler.get_app_name()} ({handler.get_new_version()}) available.</div>
+            <div>There is a newer version of {"Chandan Desk"} ({handler.get_new_version()}) available.</div>
             <div #install-me.link>{translate('Click to ' + update_or_download)}</div>
             <div #download-percent style="display:hidden; padding-top: 1em;" />
         </div>;
