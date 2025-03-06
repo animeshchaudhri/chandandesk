@@ -336,7 +336,7 @@ class MyIdMenu: Reactor.Component {
                 <div .separator />
                 <li #allow-darktheme><span>{svg_checkmark}</span>{translate('Dark Theme')}</li>
                 
-                <li #about>{translate('About')} {" "}{"Chandan Desk"}</li>
+                <li #about>{translate('About')} {" "}{"Qbdesk Desk"}</li>
             </menu>
         </popup>;
     }
@@ -377,12 +377,12 @@ class MyIdMenu: Reactor.Component {
     }
 
     function showAbout() {
-        var name = "Chandan Desk";
-        msgbox("custom-nocancel-nook-hasclose", translate("About") + " " + "Chandan Desk", "<div style='line-height: 2em'> \
+        var name = "Qbdesk Desk";
+        msgbox("custom-nocancel-nook-hasclose", translate("About") + " " + "Qbdesk Desk", "<div style='line-height: 2em'> \
             <div>Version: " + handler.get_version() + " \
             <div>Fingerprint: " + handler.get_fingerprint() + " \
           
-	    <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2025 Chandan Ltd.\
+	    <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2025 Qbdesk Ltd.\
             </div>\
         </div>", "", function(el) {
             if (el && el.attributes) {
@@ -663,7 +663,7 @@ class UpdateMe: Reactor.Component {
         var update_or_download = "download"; // !is_win ? "download" : "update";
         return <div .install-me>
             <div>{translate('Status')}</div>
-            <div>There is a newer version of {"Chandan Desk"} ({handler.get_new_version()}) available.</div>
+            <div>There is a newer version of {"Qbdesk Desk"} ({handler.get_new_version()}) available.</div>
             <div #install-me.link>{translate('Click to ' + update_or_download)}</div>
             <div #download-percent style="display:hidden; padding-top: 1em;" />
         </div>;

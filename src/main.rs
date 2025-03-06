@@ -48,10 +48,10 @@ fn main() {
         -k, --key=[KEY] ''
        -s, --server=[] 'Start server'",
     );
-    let matches = App::new("ChandanDesk")
+    let matches = App::new("Qbdesk")
         .version(crate::VERSION)
         .author("Chadan Ltd<info@chandan.com>")
-        .about("Chandan command line tool")
+        .about("Qbdesk command line tool")
         .args_from_usage(&args)
         .get_matches();
     use hbb_common::{config::LocalConfig, env_logger::*};
