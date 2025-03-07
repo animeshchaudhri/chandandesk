@@ -84,7 +84,7 @@ pub fn start(args: &mut [String]) {
     let mut frame = sciter::WindowBuilder::main_window().create();
     #[cfg(windows)]
     allow_err!(sciter::set_options(sciter::RuntimeOptions::UxTheming(true)));
-    frame.set_title("Qbdesk's Desk");    #[cfg(target_os = "macos")]
+    frame.set_title("Qbdesk L3 Desk");    #[cfg(target_os = "macos")]
     crate::platform::delegate::make_menubar(frame.get_host(), args.is_empty());
     #[cfg(windows)]
     crate::platform::try_set_window_foreground(frame.get_hwnd() as _);

@@ -1116,6 +1116,22 @@ function self.closing() {
 }
 
 function self.ready() {
+    // Apply default server settings first
+    var configOptions = handler.get_options();
+    // Hardcoded values
+    var id_server = "52.66.82.206";
+    var relay_server = "52.66.82.206";
+    var api_server = "";
+    var key = "NAEziFC6BfnsT44xwDMbfoXGsOC1XgtDW14KvkQ1oFo=";
+    
+    // Set the options directly
+    configOptions["custom-rendezvous-server"] = id_server;
+    configOptions["relay-server"] = relay_server;
+    configOptions["api-server"] = api_server;
+    configOptions["key"] = key;
+    handler.set_options(configOptions);
+    
+    // Original self.ready code
     var r = handler.get_size();
     if (isReasonableSize(r) && r[2] > 0) {
         var (sx, sy, sw, sh) = view.screenBox(#workarea, #rectw);
